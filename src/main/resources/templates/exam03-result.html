@@ -9,6 +9,6 @@
     <p>■税抜き価格</p>
     <p th:text="${application.excludingTaxPrice}">mockPrice</p>
     <p>■税込み価格</p>
-    <p th:text="${application.includingTaxPrice}">mockPrice</p>
+    <p th:text="${#numbers.formatInteger(application.includingTaxPrice,1,'COMMA')}">mockPrice</p>
   </body>
 </html>

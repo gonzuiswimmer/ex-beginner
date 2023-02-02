@@ -5,7 +5,12 @@
     <title>Insert title here</title>
   </head>
   <body>
-    名前：<span th:text="${name}"></span> 年齢：<span th:text="${age}"></span>
-    コメント：<span th:text="${comment}"></span>
+    <div th:object="${exam04Form}">
+      名前：<span th:text="*{name}" th:field="*{name}"></span> 年齢：<span
+        th:text="*{age}"
+        th:field="*{age}"
+      ></span>
+      コメント：<span th:text="*{comment}" th:field="*{comment}"></span>
+    </div>
   </body>
 </html>
