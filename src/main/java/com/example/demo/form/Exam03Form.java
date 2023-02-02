@@ -3,6 +3,7 @@ package com.example.demo.form;
 public class Exam03Form {
 	private Integer item1Price;
 	private Integer item2Price;
+	private Integer item3Price;
 
 	public Integer getItem1Price() {
 		return item1Price;
@@ -34,5 +35,4 @@ public class Exam03Form {
 				+ "]";
 	}
 
-	private Integer item3Price;
 }

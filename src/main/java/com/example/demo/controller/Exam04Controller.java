@@ -25,13 +25,19 @@ public class Exam04Controller {
 	public String registerProfile(@Validated Exam04Form exam04Form, BindingResult result,
 			RedirectAttributes redirectattributes, Model model) {
 		if (result.hasErrors()) {
-			return  index(exam04Form,model);
+			return index(exam04Form, model);
 		}
-		
+
 		User user = new User();
 		user.setName(exam04Form.getName());
 		user.setAge(exam04Form.getIntAge());
 		user.setComment(exam04Form.getComment());
+		redirectattributes.addFlashAttribute("user", user);
+		return "redirect:/ex04/toresult";
+	}
+
+	@GetMapping("/toresult")
+	public String toresult() {
 		return "exam04-result";
 	}
 }

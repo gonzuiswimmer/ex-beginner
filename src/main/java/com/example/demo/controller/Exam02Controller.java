@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpSession;
 public class Exam02Controller {
 
 	@Autowired
-	HttpSession session;
+	private HttpSession session;
 
 	@GetMapping("")
 	public String index(Model model, Exam02Form form) {

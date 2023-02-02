@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,13 +18,16 @@ public class Exam03Controller {
 	private ServletContext application;
 
 	@GetMapping("")
-	public String index(Model model, Exam03Form form) {
+	public String index(Exam03Form form) {
+		
+		
+		
 		return "exam03";
 
 	}
 
 	@PostMapping("calcTax")
-	public String calcTax(Model model, Exam03Form form) {
+	public String calcTax(Exam03Form form) {
 		int excludingTaxPrice = form.getItem1Price() + form.getItem2Price() + form.getItem3Price();
 		application.setAttribute("excludingTaxPrice", excludingTaxPrice);
 		int includingTaxPrice = (int) (excludingTaxPrice * 1.08);
