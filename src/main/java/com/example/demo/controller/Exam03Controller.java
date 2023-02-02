@@ -16,19 +16,20 @@ import jakarta.servlet.ServletContext;
 public class Exam03Controller {
 
 	@Autowired
-	ServletContext application;
+	private ServletContext application;
 
 	@GetMapping("")
-	public String index(Model model, ServletContext application, Exam03Form form) {
-		int excludingTax = form.getItem1Price() + form.getItem2Price() + form.getItem3Price();
-		application.setAttribute("excludingTax", excludingTax);
-		int includingTax = (int) (excludingTax * 1.08);
-		application.setAttribute("includingTax", includingTax);
+	public String index(Model model, Exam03Form form) {
 		return "exam03";
+
 	}
 
 	@PostMapping("calcTax")
-	public String calcTax() {
+	public String calcTax(Model model, Exam03Form form) {
+		int excludingTaxPrice = form.getItem1Price() + form.getItem2Price() + form.getItem3Price();
+		application.setAttribute("excludingTaxPrice", excludingTaxPrice);
+		int includingTaxPrice = (int) (excludingTaxPrice * 1.08);
+		application.setAttribute("includingTaxPrice", includingTaxPrice);
 		return "exam03-result";
 	}
 }
