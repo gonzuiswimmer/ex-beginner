@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+  <h2>商品一覧＆ショッピングカート一覧画面</h2>
+
+  <div class="d-flex">
+    <div class="w-50">
+      <form action="/item-and-cart.html" th:action="@{/shopping-cart/inCart}" method="post">
+        <h3>商品一覧</h3>
+        <p>(applicationスコープ)</p>
+        <div th:each="item, status : ${application.item_list}">
+          <div th:object="${item}">
+            <span th:text="*{name} + *{price}">item_name + item_price</span>
+            <button th:name="item_index" th:value="${status.index}" class="btn btn-primary">カートへ</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  
+    <div class="w-50">
+      <h3>ショッピングカート</h3>
+      <p>(sessionスコープ)</p>
+      <form action="/item-and-cart.html" th:action="@{/shopping-cart/delete}" method="post">
+        <div th:each="item, status : ${session.cart}">
+          <div th:object="${item}">
+            <span th:text="*{name} + *{price}">item_name + item_price</span>
+            <button th:name="item_index" th:value="${status.index}" class="btn btn-danger">削除</button>
+          </div>
+        </div>
+      </form>
+        
+      <br>
+      <br>
+      <p>合計(requestスコープ)</p>
+      <p th:text="${total_price} + 円">total_price</p>
+  </div>
+</body>
+</html>
