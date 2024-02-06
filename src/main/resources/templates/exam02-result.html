@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>足し算結果画面</h2>
+  <p><span th:text="|${num1} + ${num2} = ${total}|">test_num</span></p>
+  <!-- <p><span th:text="${num1} + '+' +  ${num2} + '=' + ${total}">test_num</span></p> -->
+  <a th:href="@{/exam02/}" th:text="次へ">next</a>
+</body>
+</html>
